@@ -14,61 +14,67 @@ const active = {
   profile: true,
   skills: true,
   jobs: true,
-  projects: true
+  projects: true,
 }
 
-const defaultDataUrl = 'https://raw.githubusercontent.com/4Pixel/custom-react-cv/master/sample/data.json'
+const defaultDataUrl =
+  'https://raw.githubusercontent.com/4Pixel/custom-react-cv/master/sample/data.json'
 
 export default class ConfigCV extends Component {
-  constructor( props ) {
-    super( props )
-    
-    const dataUrl = store.get( 'dataUrl' ) || defaultDataUrl
+  constructor(props) {
+    super(props)
+
+    const dataUrl = store.get('dataUrl') || defaultDataUrl
 
     this.state = {
       dataUrl: dataUrl,
       active: active,
-      hash: hashActive( active, dataUrl ),
-      data: null
+      hash: hashActive(active, dataUrl),
+      data: null,
     }
   }
 
-  componentDidMount( ){
-    this.load( )
+  componentDidMount() {
+    this.load()
   }
 
   onChangeActive = changeProp => {
-    const changedActive = f.set( changeProp.value, !changeProp.active, this.state.active )
-    this.setState( { 
+    const changedActive = f.set(changeProp.value, !changeProp.active, this.state.active)
+    this.setState({
       active: changedActive,
-      hash: hashActive( changedActive, this.state.dataUrl )
-    } )
+      hash: hashActive(changedActive, this.state.dataUrl),
+    })
   }
 
   onDataUrlChange = dataUrl => {
-    store.set( 'dataUrl', dataUrl )
-    this.setState( { 
-      dataUrl: dataUrl,
-      hash: hashActive( this.state.active, dataUrl )
-    }, this.load( ) )
+    store.set('dataUrl', dataUrl)
+    this.setState(
+      {
+        dataUrl: dataUrl,
+        hash: hashActive(this.state.active, dataUrl),
+      },
+      this.load()
+    )
   }
 
-  load = ( ) => {
-    loadData( this.state.dataUrl )
-    .then( data => this.setState( { data: data } ) )
-    .catch( ( ) => ( { data: null } ) )
+  load = () => {
+    loadData(this.state.dataUrl)
+      .then(data => this.setState({ data: data }))
+      .catch(() => ({ data: null }))
   }
 
-	render() {
+  render() {
     const { data, active } = this.state
     return (
-			<div className="ConfigCV">
-        <Toolbar hash={ this.state.hash }
-                 dataUrl={ this.state.dataUrl }
-                 onChangeActive={ this.onChangeActive } 
-                 onDataUrlChange={ this.onDataUrlChange }/>
-        { data && <CV data={ data } active={ active }/> }
-			</div>
-		);
-	}
+      <div className='ConfigCV'>
+        <Toolbar
+          hash={this.state.hash}
+          dataUrl={this.state.dataUrl}
+          onChangeActive={this.onChangeActive}
+          onDataUrlChange={this.onDataUrlChange}
+        />
+        {data && <CV data={data} active={active} />}
+      </div>
+    )
+  }
 }
