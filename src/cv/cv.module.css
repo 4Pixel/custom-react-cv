@@ -1,40 +1,40 @@
 .CV {
   padding: 30px 0px;
-	min-height: 100%;
+  min-height: 100%;
   width: 100%;
   margin-top: 40px;
 }
 
 .CV > h1 {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.CV-Sections {
+.Sections {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.CV-Sections > * {
+.Sections > * {
   margin-bottom: 20px;
   max-width: 1024px;
 }
 
 @media screen and (min-width: 640px) {
-  .CV-Sections > * {
+  .Sections > * {
     margin-bottom: 40px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .CV-Sections > * {
+  .Sections > * {
     margin-bottom: 60px;
   }
 }
 
 @media print {
-  .CV-Sections {
+  .Sections {
     display: block;
   }
 }

@@ -5,29 +5,29 @@
   width: 100%;
 }
 
-.Profile-Row {
+.Row {
   display: flex;
   width: 100%;
   flex-direction: column;
   padding: 0px 20px 15px;
 }
 
-.Profile-Title {
+.Title {
   font-size: 0.8rem;
   color: #888;
   margin-bottom: 5px;
 }
 
 @media screen and (min-width: 480px) {
-  .Profile-Row {
+  .Row {
     flex-direction: row;
   }
 
-  .Profile-Title {
+  .Title {
     font-size: 1rem;
   }
 
-  .Profile-Row > *:nth-child(1) {
+  .Row > *:nth-child(1) {
     flex-basis: 170px;
     flex-shrink: 0;
   }

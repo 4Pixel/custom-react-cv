@@ -5,14 +5,14 @@
   width: 100%;
 }
 
-.Skills-Row {
+.Row {
   display: flex;
   width: 100%;
   flex-direction: column;
   padding: 0px 20px 15px;
 }
 
-.Skills-Type {
+.Type {
   font-size: 0.8rem;
   margin-bottom: 3px;
   margin-right: 5px;
@@ -20,15 +20,15 @@
 }
 
 @media screen and (min-width: 480px) {
-  .Skills-Row {
+  .Row {
     flex-direction: row;
   }
 
-  .Skills-Type {
+  .Type {
     font-size: 1rem;
   }
 
-  .Skills-Row > *:nth-child(1) {
+  .Row > *:nth-child(1) {
     flex-basis: 170px;
     flex-shrink: 0;
   }

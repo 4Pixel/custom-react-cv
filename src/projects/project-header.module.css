@@ -1,22 +1,22 @@
-.ProjectHeader-CompanyTitle {
+.CompanyTitle {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  border-top: dotted 1px hsla(var(--hue), var( --sat), 22%, 0.4);
-  border-bottom: dotted 1px hsla(var(--hue), var( --sat), 22%, 0.4);
+  border-top: dotted 1px hsla(var(--hue), var(--sat), 22%, 0.4);
+  border-bottom: dotted 1px hsla(var(--hue), var(--sat), 22%, 0.4);
   margin-bottom: 15px;
   padding: 15px 20px 15px;
-  background-color:  hsl(var(--hue), var( --sat), 22%);
+  background-color: hsl(var(--hue), var(--sat), 22%);
 }
 
-.ProjectHeader-CompanyName {
+.CompanyName {
   margin-bottom: 3px;
   font-size: 1.3rem;
   color: #fff;
   flex-basis: calc(100% - 40px);
 }
 
-.ProjectHeader-CompanyLink {
+.CompanyLink {
   display: flex;
   flex-basis: 100%;
   align-items: center;
@@ -24,43 +24,44 @@
   height: 16px;
 }
 
-.ProjectHeader-CompanyTag {
+.CompanyTag {
   font-size: 0.9rem;
   color: #888;
   margin-right: 5px;
 }
 
-.ProjectHeader-Link {
+.Link {
   padding: 8px;
 }
 
-.ProjectHeader-IconLink {
+.IconLink {
   opacity: 0.5;
   display: flex;
   margin-bottom: -8px;
   filter: invert(1);
 }
 
-.ProjectHeader-IconUp {
+.IconUp {
   opacity: 0.5;
   display: flex;
   filter: invert(1);
 }
 
 @media screen and (min-width: 480px) {
-  .ProjectHeader-CompanyTitle {
+  .CompanyTitle {
     flex-direction: row;
   }
 }
 
 @media screen and (min-width: 640px) {
-  .ProjectHeader-CompanyName {
+  .CompanyName {
     flex-basis: auto;
   }
 }
 
 @media print {
-  .ProjectHeader-IconUp, .ProjectHeader-IconLink {
+  .IconUp,
+  .IconLink {
     display: none;
   }
 }

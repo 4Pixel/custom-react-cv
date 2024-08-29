@@ -5,35 +5,35 @@
   width: 100%;
 }
 
-.Education-Row {
+.Row {
   display: flex;
   width: 100%;
   flex-direction: column;
   padding: 0px 20px 15px;
 }
 
-.Education-Daterange {
+.Daterange {
   font-size: 0.8rem;
   margin-bottom: 3px;
   color: #888;
 }
 
-.Education-Note {
+.Note {
   margin-left: 20px;
   font-size: 0.9rem;
   color: #666;
 }
 
 @media screen and (min-width: 480px) {
-  .Education-Row {
+  .Row {
     flex-direction: row;
   }
 
-  .Education-Daterange {
+  .Daterange {
     font-size: 1rem;
   }
 
-  .Education-Row > *:nth-child(1) {
+  .Row > *:nth-child(1) {
     flex-basis: 170px;
     flex-shrink: 0;
   }

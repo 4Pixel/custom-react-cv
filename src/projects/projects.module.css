@@ -5,54 +5,55 @@
   width: 100%;
 }
 
-.Projects-Container {
+.Container {
   width: 100%;
 }
 
-.Projects-Project {
+.Project {
   margin-bottom: 20px;
 }
 
-.Projects-SubSection{ 
+.SubSection {
   padding: 0px 20px 15px;
 }
 
-.Projects-Description {
+.Description {
   margin-left: 10px;
   color: #666;
 }
 
-.Projects-SubHeader {
+.SubHeader {
   margin-bottom: 10px;
 }
 
-.Projects-ListItems {
+.ListItems {
   margin-left: 10px;
   color: #666;
 }
 
-.Projects-ListItem {
-  margin-bottom: 7px
+.ListItem {
+  margin-bottom: 7px;
 }
 
-.Projects-Gallery {
+.Gallery {
   display: flex;
   overflow-x: scroll;
   margin: 0 10px;
 }
 
-.Projects-GalleryImg {
+.GalleryImg {
   height: 200px;
   margin-right: 10px;
   border: solid 1px #aaa;
   opacity: 0.7;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   transition-property: opacity filter;
   -webkit-filter: grayscale(80%);
   filter: grayscale(80%);
 }
 
-.Projects-GalleryImg:hover, .Projects-GalleryImg:active {
+.GalleryImg:hover,
+.GalleryImg:active {
   opacity: 1;
   filter: none;
 }
@@ -62,20 +63,20 @@
     display: block;
   }
 
-  .Projects-Project {
+  .Project {
     page-break-after: always;
   }
 
-  .Projects-Project:last-child {
+  .Project:last-child {
     page-break-after: auto;
   }
 
-  .Projects-Gallery {
+  .Gallery {
     display: block;
     overflow: auto;
   }
 
-  .Projects-GalleryImg {
+  .GalleryImg {
     height: 150px;
     display: inline-block;
     margin-bottom: 10px;
