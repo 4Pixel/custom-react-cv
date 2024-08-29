@@ -11,10 +11,10 @@ const translations = {
       birthday: 'Geburtstag',
       city_of_birth: 'Geburtsort',
       nationality: 'Staatsbürgerschaft',
-      strengths: 'Stärken'
+      strengths: 'Stärken',
     },
     education: 'Ausbildung',
-    jobs: 'Beruflicher Werdegang'
+    jobs: 'Beruflicher Werdegang',
   },
   en: {
     profile: 'Profile',
@@ -26,14 +26,14 @@ const translations = {
       birthday: 'Birthday',
       city_of_birth: 'City Of Birth',
       nationality: 'Nationality',
-      strengths: 'Strengths'
+      strengths: 'Strengths',
     },
     education: 'Education',
-    jobs: 'Professional Experience'
-  }
+    jobs: 'Professional Experience',
+  },
 }
 
 let language = 'en'
 
-export const i18n = path => f.get( path, translations[ language ] )
-export const setLanguage = newLanguage => language = newLanguage
+export const i18n = path => f.get(path, translations[language])
+export const setLanguage = newLanguage => (language = newLanguage)

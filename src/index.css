@@ -1,25 +1,26 @@
-:root{
+:root {
   --hue: 216;
   --sat: 22%;
 }
 
-html, body {
-	height: 100%;
+html,
+body {
+  height: 100%;
   width: 100%;
   min-height: 100%;
-	padding: 0;
-	margin: 0;
-	background: #FFF;
-	font-family: 'Open Sans','Helvetica Neue',sans-serif;
-	font-weight: 400;
-	color: #444;
-	-webkit-font-smoothing: antialiased;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  color: #444;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
@@ -29,7 +30,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 p {
@@ -46,14 +47,14 @@ h1 {
   font-weight: 400;
   font-size: 2rem;
   margin: 0px 0px 15px;
-  color: hsl(var(--hue), var( --sat), 35%);
+  color: hsl(var(--hue), var(--sat), 35%);
 }
 
 h2 {
   font-weight: 400;
   font-size: 1.5rem;
   margin: 0px 0px 15px;
-  color: hsl(var(--hue), var( --sat), 35%);
+  color: hsl(var(--hue), var(--sat), 35%);
 }
 
 h3 {
@@ -68,7 +69,8 @@ h4 {
   margin: 0px 0px 5px;
 }
 
-#root, .App {
+#root,
+.App {
 }
 
 @media screen and (min-width: 480px) {
