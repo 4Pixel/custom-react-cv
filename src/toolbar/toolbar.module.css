@@ -1,0 +1,91 @@
+.Toolbar {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  z-index: 1;
+}
+
+.Bar {
+  height: 40px;
+  background-color: hsl(var(--hue), var(--sat), 18%);
+  border-bottom: hsl(var(--hue), var(--sat), 22%) solid 1px;
+  display: flex;
+  align-items: center;
+}
+
+img.Icon {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+.Menu {
+  position: relative;
+  width: 100%;
+}
+
+.MenuContainer {
+  position: absolute;
+  width: 100%;
+  box-shadow: 0px 4px 8px hsla(var(--hue), var(--sat), 18%, 0.3);
+}
+
+.MenuContainer > ul {
+  position: relative;
+  display: block;
+}
+
+.MenuEntry {
+  padding: 5px 7px;
+  background-color: hsl(var(--hue), var(--sat), 95%);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 3px 5px 3px 3px;
+  background-color: red;
+}
+
+.DataLink {
+  margin-left: 22px;
+}
+
+.MenuEntryHash,
+.MenuEntryDataLink {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.MenuEntry .Ico {
+  margin-right: 5px;
+  margin-left: 3px;
+}
+
+.Hash {
+  margin-top: 5px;
+  margin-left: 22px;
+  margin-bottom: 3px;
+  color: #444;
+  display: flex;
+  align-items: center;
+}
+
+.MenuEntryHash textarea,
+.MenuEntryDataLink textarea {
+  margin-left: 22px;
+  width: calc(100% - 30px);
+  border: solid 1px hsl(var(--hue), var(--sat), 18%);
+  padding: 4px 5px;
+  height: 55px;
+  margin-bottom: 10px;
+}
+
+@media print {
+  .Toolbar {
+    display: none;
+  }
+}
