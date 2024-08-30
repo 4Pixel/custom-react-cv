@@ -37,8 +37,14 @@
 
 .Gallery {
   display: flex;
+  flex-wrap: wrap;
   overflow-x: scroll;
-  margin: 0 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.Gallery::-webkit-scrollbar {
+  display: none;
 }
 
 .GalleryImg {

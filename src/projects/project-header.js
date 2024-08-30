@@ -5,9 +5,6 @@ export default function ProjectHeader({ cId, company, web, title }) {
   const getCompany = () => (
     <a href={`#${cId}`} title='zur Jobbeschreibung' className={styles.CompanyLink}>
       <span className={styles.CompanyTag}>@{company}</span>
-      <div className={styles.Link}>
-        <Ico icon='arrow-up' className={styles.IconUp} />
-      </div>
     </a>
   )
 
@@ -19,8 +16,8 @@ export default function ProjectHeader({ cId, company, web, title }) {
     )
 
   return (
-    <div className={styles.CompanyTitle}>
-      <h3 className={styles.CompanyName}>{title}</h3>
+    <div className={styles.ProjectTitle}>
+      <h3 className={styles.ProjectName}>{title}</h3>
       {getLink()}
       {getCompany()}
     </div>
