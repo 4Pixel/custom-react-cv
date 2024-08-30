@@ -14,7 +14,10 @@ export default function ConfigCV() {
 
   const load = dataUrl => {
     loadData(dataUrl)
-      .then(data => setData(data))
+      .then(data => {
+        setData(data)
+        console.info('loaded cv data', data)
+      })
       .catch(() => setData(null))
   }
 
