@@ -46,7 +46,7 @@ export default function Projects({ data, sections }) {
     )
   }
 
-  const getCompanyById = cId => data.jobs.find(job => job.cId === cId).company
+  const getCompanyById = cId => data.jobs.find(job => job.cId === cId)?.company
 
   return (
     <div className={styles.Projects}>
