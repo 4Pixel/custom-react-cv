@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import { i18n } from 'src/locale'
 
 export default function Jobs({ data }) {
-  const list = data?.jobs.sort((jobA, jobB) => jobB.from - jobA.from).reverse()
+  const list = data?.jobs.sort((jobA, jobB) => new Date(jobB.from) - new Date(jobA.from))
 
   return (
     <div className={styles.Jobs}>

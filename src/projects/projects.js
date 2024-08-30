@@ -53,22 +53,24 @@ export default function Projects({ data, sections }) {
       <Lightbox images={lboxImages}></Lightbox>
       <h2>Projekte</h2>
       <div className={styles.Container}>
-        {data.projects.map(project => (
-          <div
-            className={styles.Project}
-            id={`Project_${project.title}`}
-            key={project.cId + project.title}>
-            <ProjectHeader
-              title={project.title}
-              web={project.web}
-              cId={project.cId}
-              company={getCompanyById(project.cId)}></ProjectHeader>
-            <Description project={project} />
-            <List list={project.technology} title='Technologie' />
-            <List list={project.responsibilities} title='Aufgaben' />
-            <Gallery project={project} />
-          </div>
-        ))}
+        {data.projects
+          .filter(p => !p.shouldExclude)
+          .map(project => (
+            <div
+              className={styles.Project}
+              id={`Project_${project.title}`}
+              key={project.cId + project.title}>
+              <ProjectHeader
+                title={project.title}
+                web={project.web}
+                cId={project.cId}
+                company={getCompanyById(project.cId)}></ProjectHeader>
+              <Description project={project} />
+              <List list={project.technology} title='Technologie' />
+              <List list={project.responsibilities} title='Aufgaben' />
+              <Gallery project={project} />
+            </div>
+          ))}
       </div>
     </div>
   )
