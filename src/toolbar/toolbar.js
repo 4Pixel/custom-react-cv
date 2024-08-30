@@ -1,41 +1,38 @@
 import toolbar from './toolbar.module.css'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { activeSections } from 'src/common'
+import { getSections, hashActive } from 'src/cv-service'
 import Ico from 'src/ico/ico'
 import { C } from 'src/classnames'
-import { values } from 'lodash/fp'
 
-const Menu = ({ dataUrl, hash, updateActive, updateDataUrl }) => {
+const Menu = ({ initialDataUrl, updateDataUrl, onChangeActive }) => {
   const [host, setHost] = useState('')
-  const [state, setState] = useState({
-    dataUrl,
-    hash,
-    sections: activeSections.map(section => ({
-      title: section.title,
-      value: section.long,
-      active: true,
-    })),
-  })
+  const [hash, setHash] = useState('')
+  const [dataUrl, setDataUrl] = useState(initialDataUrl)
+  const [sections, setSections] = useState(getSections())
 
   const onToggleActive = section => {
-    setState({
-      ...state,
-      sections: state.sections.map(s => {
+    setSections(
+      sections.map(s => {
         if (s.value === section.value) {
-          s.active = !section.active
+          s.isActive = !section.isActive
         }
         return s
-      }),
-    })
-    updateActive(section)
+      })
+    )
   }
 
-  const onDataUrlChange = event => updateDataUrl(event.target.value)
+  const onDataUrlChange = event => setDataUrl(event.target.value)
 
   useEffect(() => {
-    setState({ ...state, dataUrl, hash })
-  }, [dataUrl, hash])
+    setHash(hashActive(sections, dataUrl))
+    updateDataUrl(dataUrl)
+  }, [dataUrl])
+
+  useEffect(() => {
+    setHash(hashActive(sections, dataUrl))
+    onChangeActive(sections)
+  }, [sections])
 
   useEffect(() => {
     setHost(window.location.host)
@@ -45,12 +42,12 @@ const Menu = ({ dataUrl, hash, updateActive, updateDataUrl }) => {
     <div className={toolbar.Menu}>
       <div className={toolbar.MenuContainer}>
         <ul>
-          {values(state.sections).map(section => (
+          {sections.map(section => (
             <li key={section.value} className={toolbar.MenuEntry}>
               <input
                 className={toolbar.Checkbox}
                 type='checkbox'
-                checked={section.active}
+                checked={section.isActive}
                 onChange={() => onToggleActive(section)}
               />
               <span onClick={() => onToggleActive(section)}>{section.title}</span>
@@ -60,13 +57,13 @@ const Menu = ({ dataUrl, hash, updateActive, updateDataUrl }) => {
             <span className={toolbar.DataLink}>
               Link zu Deinem JSON file (zB. Google Drive, DropBox,...)
             </span>
-            <textarea type='text' value={state.dataUrl} onChange={onDataUrlChange} />
+            <textarea type='text' value={dataUrl} onChange={onDataUrlChange} />
           </li>
           <li className={C(toolbar.MenuEntry, toolbar.MenuEntryHash)}>
-            <Link className={toolbar.Hash} href={'/custom/' + state.hash} target='_blank'>
+            <Link className={toolbar.Hash} href={'/custom/' + hash} target='_blank'>
               Share Link anzeigen <Ico icon='external-link' />
             </Link>
-            <textarea type='text' value={host + '/custom/' + state.hash} readOnly />
+            <textarea type='text' value={host + '/custom/' + hash} readOnly />
           </li>
         </ul>
       </div>
@@ -74,8 +71,8 @@ const Menu = ({ dataUrl, hash, updateActive, updateDataUrl }) => {
   )
 }
 
-export default function Toolbar({ dataUrl, hash, onChangeActive, onDataUrlChange }) {
-  const [show, setShow] = useState(true)
+export default function Toolbar({ initialDataUrl, onChangeActive, onDataUrlChange }) {
+  const [show, setShow] = useState(false)
 
   const onMenuToggle = () => setShow(!show)
 
@@ -86,10 +83,9 @@ export default function Toolbar({ dataUrl, hash, onChangeActive, onDataUrlChange
       </div>
       {show ? (
         <Menu
-          dataUrl={dataUrl}
-          hash={hash}
-          updateActive={onChangeActive}
+          initialDataUrl={initialDataUrl}
           updateDataUrl={onDataUrlChange}
+          onChangeActive={onChangeActive}
         />
       ) : null}
     </div>

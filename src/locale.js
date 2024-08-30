@@ -1,4 +1,4 @@
-import f from 'lodash/fp'
+import { get } from 'lodash/fp'
 
 const translations = {
   de: {
@@ -33,7 +33,7 @@ const translations = {
   },
 }
 
-let language = 'en'
+let language = 'de'
 
-export const i18n = path => f.get(path, translations[language])
+export const i18n = path => get(path, translations[language])
 export const setLanguage = newLanguage => (language = newLanguage)

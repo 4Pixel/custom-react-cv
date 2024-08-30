@@ -3,8 +3,7 @@ import { format } from 'date-fns'
 import { i18n } from 'src/locale'
 
 export default function Education({ data }) {
-  // const list = flow(f.get('data.education'), f.sortBy('from'), f.reverse)(this.props)
-  const list = data?.education?.sort((eduA, eduB) => eduB.from - eduA.from).revers()
+  const list = data?.education?.sort((eduA, eduB) => eduB.from - eduA.from).reverse()
   return (
     <div className={styles.Education}>
       <h2>{i18n('education')}</h2>
@@ -16,7 +15,7 @@ export default function Education({ data }) {
           </div>
           <div>
             <p>{entry.title}</p>
-            {f.getOr([], 'notes', entry).map((note, idx) => (
+            {(entry.notes || []).map((note, idx) => (
               <p className={styles.Note} key={idx}>
                 {note}
               </p>

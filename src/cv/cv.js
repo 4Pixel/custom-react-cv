@@ -1,34 +1,23 @@
 import styles from './cv.module.css'
-import ProfileFoto from 'src/profile-foto/profile-foto'
 import Education from 'src/education/education'
 import PersonalData from 'src/personal-data/personal-data'
 import Skills from 'src/skills/skills'
-import Jobs from 'src/jobs/jobs'
 import Projects from 'src/projects/projects'
 import Profile from 'src/profile/profile'
+import ProfileFoto from 'src/profile-foto/profile-foto'
+import Jobs from 'src/jobs/jobs'
 
-const components = {
-  profileFoto: ProfileFoto,
-  education: Education,
-  personalData: PersonalData,
-  profile: Profile,
-  skills: Skills,
-  jobs: Jobs,
-  projects: Projects,
-}
+const components = [ProfileFoto, Education, PersonalData, Profile, Skills, Jobs, Projects]
 
-export default function CV({ data, active }) {
-  const renderComponent = (activeKey, idx) => {
-    const Component = components[activeKey]
-    return <Component data={data} key={idx} />
+export default function CV({ data, sections }) {
+  const renderComponent = (Component, idx) => {
+    return <Component data={data} key={idx} sections={sections} />
   }
 
-  const actives = []
-  f.mapKeys(activeKey => active[activeKey] && actives.push(activeKey), active)
   return (
     <div className={styles.CV}>
       <div className={styles.Sections}>
-        {actives.map((activeKey, idx) => renderComponent(activeKey, idx))}
+        {components.map((component, idx) => renderComponent(component, idx))}
       </div>
     </div>
   )

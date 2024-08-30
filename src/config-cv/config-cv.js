@@ -1,71 +1,43 @@
 import { useEffect, useState } from 'react'
 import Toolbar from 'src/toolbar/toolbar'
-import { hashActive } from 'src/config-cv/config-service'
 import store from 'store2'
-import { loadData } from 'src/custom-cv/custom-cv-service'
-
-const active = {
-  profileFoto: true,
-  education: true,
-  personalData: true,
-  profile: true,
-  skills: true,
-  jobs: true,
-  projects: true,
-}
+import { getSections, loadData } from 'src/cv-service'
+import CV from 'src/cv/cv'
 
 const defaultDataUrl =
   'https://raw.githubusercontent.com/4Pixel/custom-react-cv/master/sample/data.json'
 
 export default function ConfigCV() {
-  const dataUrl = store.get('dataUrl') || defaultDataUrl
-  const [state, setState] = useState({
-    dataUrl: dataUrl,
-    active: active,
-    hash: hashActive(active, dataUrl),
-    data: null,
-  })
+  const initialDataUrl = store.get('dataUrl') || defaultDataUrl
+  const [data, setData] = useState(null)
+  const [sections, setSections] = useState(getSections())
 
-  const load = () => {
-    loadData(state.dataUrl)
-      .then(data => setState({ ...state, data }))
-      .catch(() => setState({ ...state, data: null }))
+  const load = dataUrl => {
+    loadData(dataUrl)
+      .then(data => setData(data))
+      .catch(() => setData(null))
   }
 
-  const onChangeActive = changeProp => {
-    const changedActive = {
-      ...state.active,
-      [changeProp.value]: !changeProp.active,
-    }
-    setState({
-      ...state,
-      active: changedActive,
-      hash: hashActive(changedActive, state.dataUrl),
-    })
-  }
+  const onChangeActive = sections => setSections(sections)
 
   const onDataUrlChange = dataUrl => {
     store.set('dataUrl', dataUrl)
-    setState({
-      ...state,
-      dataUrl: dataUrl,
-      hash: hashActive(this.state.active, dataUrl),
-    })
+    load(dataUrl)
   }
 
   useEffect(() => {
-    load()
-  }, [state.dataUrl])
+    load(initialDataUrl)
+  }, [])
 
   return (
     <div className='ConfigCV'>
       <Toolbar
-        hash={state.hash}
-        dataUrl={state.dataUrl}
+        initialDataUrl={initialDataUrl}
         onChangeActive={onChangeActive}
         onDataUrlChange={onDataUrlChange}
       />
-      {state.data && <CV data={state.data} active={state.active} />}
+      {console.log('data', data, 'sections', sections)}
+      {data && <CV data={data} sections={sections} />}
     </div>
   )
 }
