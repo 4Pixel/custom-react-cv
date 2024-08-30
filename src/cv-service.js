@@ -37,7 +37,7 @@ export const loadData = url =>
           updatedData[section.dataKey] = dataSection.map(
             extendImagePathsInSubsection(data.imageBasePath)
           )
-        } else {
+        } else if (dataSection) {
           updatedData[section.dataKey] = extendImagePathsInSubsection(data.imageBasePath)(
             dataSection
           )

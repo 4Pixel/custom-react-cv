@@ -5,7 +5,7 @@ import { getSections, loadData } from 'src/cv-service'
 import CV from 'src/cv/cv'
 
 const defaultDataUrl =
-  'https://raw.githubusercontent.com/4Pixel/custom-react-cv/master/sample/data.json'
+  'https://raw.githubusercontent.com/4Pixel/custom-react-cv/master/public/data/sample/data.json'
 
 export default function ConfigCV() {
   const initialDataUrl = store.get('dataUrl') || defaultDataUrl
@@ -36,7 +36,6 @@ export default function ConfigCV() {
         onChangeActive={onChangeActive}
         onDataUrlChange={onDataUrlChange}
       />
-      {console.log('data', data, 'sections', sections)}
       {data && <CV data={data} sections={sections} />}
     </div>
   )
