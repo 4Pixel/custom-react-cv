@@ -1,5 +1,5 @@
 {
-  "imageBasePath": "https://raw.githubusercontent.com/4Pixel/custom-react-cv/master/public/data/sample/images/",
+  "imageBasePath": "https://raw.githubusercontent.com/4Pixel/custom-react-cv/master/public/data/sample/",
   "personalData": {
     "name": { "title": "Name", "value": "Steve Jobs" },
     "phone": { "title": "Telefon", "value": "+43 555 1234567" },
