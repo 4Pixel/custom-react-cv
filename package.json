@@ -16,7 +16,7 @@
   "author": "Markus Glatz",
   "license": "MIT",
   "dependencies": {
-    "crypto-js": "^4.0.0",
+    "crypto-js": "^4.2.0",
     "date-fns": "^1.29.0",
     "lodash": "^4.17.21",
     "next": "^14.2.10",
