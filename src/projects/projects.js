@@ -66,7 +66,7 @@ export default function Projects({ data, sections }) {
                 cId={project.cId}
                 company={getCompanyById(project.cId)}></ProjectHeader>
               <Description project={project} />
-              <List list={project.technology} title='Technologie' />
+              <List list={project.technology} title='Technologien' />
               <List list={project.responsibilities} title='Aufgaben' />
               <Gallery project={project} />
             </div>
